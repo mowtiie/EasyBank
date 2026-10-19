@@ -58,13 +58,11 @@ public class RegisterActivity extends AppCompatActivity {
             user.email = email;
             user.password = password;
 
-            int result = easyBankDatabase.register(user);
-            if (result == -1) {
-                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-            } else {
-                sessionManager.setUserId(result);
+            if (easyBankDatabase.register(user)) {
                 Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
                 finish();
+            } else {
+                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }

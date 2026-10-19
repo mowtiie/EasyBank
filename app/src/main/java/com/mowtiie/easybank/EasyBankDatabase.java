@@ -46,14 +46,14 @@ public class EasyBankDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS transactions;");
     }
 
-    public int register(User user) {
+    public boolean register(User user) {
         try (SQLiteDatabase database = getWritableDatabase()) {
             ContentValues values = new ContentValues();
             values.put("fullName", user.fullName);
             values.put("email", user.email);
             values.put("phone", user.phone);
             values.put("password", user.password);
-            return (int) database.insert("users", null, values);
+            return database.insert("users", null, values) != -1;
         }
     }
 }
