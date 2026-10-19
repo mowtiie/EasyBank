@@ -13,6 +13,7 @@
         android:theme="@style/Theme.EasyBank">
         <activity
             android:name=".RegisterActivity"
+            android:parentActivityName=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

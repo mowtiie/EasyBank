@@ -26,6 +26,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:hint="Email"
             android:layout_marginTop="24dp"
+            app:endIconMode="clear_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -39,6 +40,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:hint="Password"
             android:layout_marginVertical="16dp"
+            app:endIconMode="password_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
