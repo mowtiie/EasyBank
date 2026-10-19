@@ -1,6 +1,8 @@
 package com.mowtiie.easybank;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,9 +12,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.mowtiie.easybank.databinding.ActivityRegisterBinding;
 
+import java.util.Objects;
+
 public class RegisterActivity extends AppCompatActivity {
 
     ActivityRegisterBinding binding;
+    SessionManager sessionManager;
+    EasyBankDatabase easyBankDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +32,40 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
+        easyBankDatabase = new EasyBankDatabase(this);
+        sessionManager = new SessionManager(this);
+
         setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        binding.btnRegister.setOnClickListener(v -> {
+            String fullName = Objects.requireNonNull(binding.fullNameInput.getText()).toString().trim();
+            String phone = Objects.requireNonNull(binding.phoneInput.getText()).toString().trim();
+            String email = Objects.requireNonNull(binding.emailInput.getText()).toString().trim();
+            String password = Objects.requireNonNull(binding.passwordInput.getText()).toString().trim();
+            String confirmPassword = Objects.requireNonNull(binding.confirmPasswordInput.getText()).toString().trim();
+
+            if (!password.equalsIgnoreCase(confirmPassword)) {
+                Toast.makeText(this, "Passwords must match", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            User user = new User();
+            user.fullName = fullName;
+            user.phone = phone;
+            user.email = email;
+            user.password = password;
+
+            int result = easyBankDatabase.register(user);
+            if (result == -1) {
+                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            } else {
+                sessionManager.setUserId(result);
+                Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 }
