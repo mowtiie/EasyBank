@@ -1,7 +1,9 @@
 package com.mowtiie.easybank;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -44,6 +46,17 @@ public class EasyBankDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS users;");
         db.execSQL("DROP TABLE IF EXISTS accounts;");
         db.execSQL("DROP TABLE IF EXISTS transactions;");
+    }
+
+    public int login(String email, String password) {
+        try (SQLiteDatabase database = getReadableDatabase()) {
+            @SuppressLint("Recycle")
+            Cursor cursor = database.rawQuery("SELECT * FROM users WHERE email = ? AND password = ?", new String[]{email, password});
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(cursor.getColumnIndexOrThrow("userId"));
+            }
+        }
+        return -1;
     }
 
     public boolean register(User user) {
