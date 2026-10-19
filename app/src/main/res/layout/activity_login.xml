@@ -1,83 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorSurfaceContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:padding="24dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/app_name"
-            android:layout_gravity="center"
             android:textAppearance="?attr/textAppearanceDisplaySmall"
-            android:fontFamily="serif"
+            android:textColor="?attr/colorPrimary"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:text="Log in to your accounts"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
             android:hint="Email"
-            android:layout_marginTop="24dp"
-            app:endIconMode="clear_text"
+            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_input"
+                android:id="@+id/etEmail"
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
             android:hint="Password"
-            android:layout_marginVertical="16dp"
             app:endIconMode="password_toggle"
+            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_input"
+                android:id="@+id/etPassword"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
-            android:text="Login"
+            android:id="@+id/btnForgot"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:text="Forgot password?"
+            android:layout_gravity="end"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            android:text="Log in"
+            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:gravity="center"
-            android:layout_marginTop="8dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignUp"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:text="Create account"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:text="Don't have an account?"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/btn_create_one"
-                android:text="Create one"
-                android:textStyle="bold"
-                android:padding="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:textColor="?attr/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>

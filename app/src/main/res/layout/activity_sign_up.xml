@@ -1,129 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorSurfaceContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.SignUpActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:fitsSystemWindows="true"
-        app:liftOnScroll="true"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:background="?attr/colorSurfaceContainer"
+        app:title="Create account"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationContentDescription="Back"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"/>
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            app:title="Create an account"
-            app:titleTextColor="?attr/colorOnSurface"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    <ScrollView
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:padding="16dp"
             android:orientation="vertical"
+            android:padding="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:text="Personal details"
-                android:textAppearance="?attr/textAppearanceTitleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
                 android:hint="Full name"
-                app:endIconMode="clear_text"
+                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/full_name_input"
+                    android:id="@+id/etName"
+                    android:inputType="textPersonName|textCapWords"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Phone"
-                android:layout_marginVertical="16dp"
-                app:prefixText="+63"
-                app:endIconMode="clear_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phone_input"
-                    android:inputType="phone"
-                    android:maxLength="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_marginBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:text="Account details"
-                android:textAppearance="?attr/textAppearanceTitleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
                 android:hint="Email"
-                app:endIconMode="clear_text"
+                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email_input"
+                    android:id="@+id/etEmail"
                     android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Password"
-                android:layout_marginVertical="16dp"
-                app:endIconMode="password_toggle"
+                android:id="@+id/tilPhone"
+                android:hint="Phone"
+                app:helperText="11 digits starting with 09"
+                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_input"
-                    android:inputType="textPassword"
+                    android:id="@+id/etPhone"
+                    android:inputType="phone"
+                    android:maxLength="11"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
+                android:hint="Password"
+                app:helperText="At least 6 characters"
+                app:endIconMode="password_toggle"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfirm"
                 android:hint="Confirm password"
                 app:endIconMode="password_toggle"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/confirm_password_input"
+                    android:id="@+id/etConfirm"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_register"
-                android:text="Register"
-                android:layout_marginTop="12dp"
+                android:id="@+id/btnSignUp"
+                android:text="Sign up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </ScrollView>
+</LinearLayout>

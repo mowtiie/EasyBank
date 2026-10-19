@@ -12,14 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyBank">
         <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false"
-            android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +20,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TransferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BillersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PayBillActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TransactionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.NotificationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
